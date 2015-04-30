@@ -32,7 +32,8 @@ class TimeAgo {
     // if the $timezone is null, we take 'Europe/London' as the default
     // this was done, because the parent construct tossed an exception
     if($timezone == NULL) {
-      $timezone = 'Europe/Copenhagen';
+      //$timezone = 'Europe/Copenhagen';
+      $timezone = 'Africa/Lagos';
     }
     
     $this->timezone = $timezone;
@@ -54,7 +55,8 @@ class TimeAgo {
     
     // less than 29secs
     if($timeDifference <= 29) {
-      $timeAgo = "less than a minute";
+      //$timeAgo = "less than a minute";
+      $timeAgo = $timeDifference . " seconds";
     }
     // more than 29secs and less than 1min29secss
     else if($timeDifference > 29 && $timeDifference <= 89) {
@@ -175,6 +177,8 @@ class TimeAgo {
       $years = floor($timeDifference / $this->secondsPerYear);
       $timeAgo = "over ".$years." years";
     }
+    
+    $timeAgo .= " ago";
     
     return $timeAgo;
   }
